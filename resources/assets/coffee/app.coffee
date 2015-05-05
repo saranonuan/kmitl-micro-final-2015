@@ -1,4 +1,5 @@
 online_timeouts = {}
+web_timeouts = {}
 
 $(document).foundation();
 console.log("Load Foundation");
@@ -11,9 +12,14 @@ client.onConnectionLost = (response) ->
 	return;
 
 callOnlineTimeout = (student_id) ->
-	$('#deviceStatus-' + student_id).prop( "checked", false );
-	delete online_timeouts[student_id]
-	console.log("Timeout Call", student_id);
+  $('#deviceStatus-' + student_id).prop( "checked", false );
+  delete online_timeouts[student_id]
+  console.log("Timeout Call", student_id);
+
+callOnlineWebTimeout = (student_id) ->
+  $('#deviceStatusWeb-' + student_id).prop( "checked", false );
+  delete web_timeouts[student_id]
+  console.log("Timeout Call", student_id);
 
 client.onMessageArrived = (message) ->
 	topic = message.destinationName
@@ -43,14 +49,26 @@ client.onMessageArrived = (message) ->
 				console.log("Clear Timeout", student_id)
 			$('#deviceStatus-' + student_id).prop( "checked", true )
 			online_timeouts[student_id] = setTimeout(callOnlineTimeout, 5000, student_id);
+  else if topic == "Final/Web"
+    msg = message.payloadString.split("-")
+    if msg.length == 2 and msg[0] == "ONLINE"
+      student_id = String(msg[1])
+      if web_timeouts[student_id]
+        timeout = web_timeouts[student_id]
+        clearTimeout(timeout)
+        delete web_timeouts[student_id]
+        console.log("Clear Timeout", student_id)
+      $('#deviceStatus-' + student_id).prop( "checked", true )
+      web_timeouts[student_id] = setTimeout(callOnlineWebTimeout, 5000, student_id);
 	return;
 
 connect = () ->
 	client.connect({
 		onSuccess: () ->
-			client.subscribe("Final/Solar")
-			client.subscribe("Final/Status")
-			return
+      client.subscribe("Final/Solar")
+      client.subscribe("Final/Status")
+      client.subscribe("Final/Web")
+      return
 	});
 
 connect()

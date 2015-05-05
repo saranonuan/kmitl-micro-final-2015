@@ -30,6 +30,10 @@
                         <input id="deviceStatus-53070{{$i}}" type="checkbox" disabled>
                         <label for="deviceStatus-53070{{$i}}"></label>
                     </div>
+                    <div class="switch small">
+                        <input id="deviceStatusWeb-53070{{$i}}" type="checkbox" disabled>
+                        <label for="deviceStatusWeb-53070{{$i}}"></label>
+                    </div>
                 </li>
             @endfor
         </ul>
