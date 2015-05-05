@@ -12,8 +12,12 @@ class DashboardController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		return view('dashboard.index', []);
+    {
+        $students = array(
+            "it53070077",
+            "it53070088"
+        );
+		return view('dashboard.index', array("students" => $students));
 	}
 
 }
