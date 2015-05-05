@@ -8617,19 +8617,19 @@ c=null==c?[b]:_.makeArray(c,[b]),l=_.event.special[n]||{},e||!l.trigger||l.trigg
         }
         $('#deviceStatus-' + student_id).prop("checked", true);
         online_timeouts[student_id] = setTimeout(callOnlineTimeout, 5000, student_id);
-      } else if (topic === "Final/Web") {
-        msg = message.payloadString.split("-");
-        if (msg.length === 2 && msg[0] === "ONLINE") {
-          student_id = String(msg[1]);
-          if (web_timeouts[student_id]) {
-            timeout = web_timeouts[student_id];
-            clearTimeout(timeout);
-            delete web_timeouts[student_id];
-            console.log("Clear Timeout", student_id);
-          }
-          $('#deviceStatusWeb-' + student_id).prop("checked", true);
-          web_timeouts[student_id] = setTimeout(callOnlineWebTimeout, 5000, student_id);
+      }
+    } else if (topic === "Final/Web") {
+      msg = message.payloadString.split("-");
+      if (msg.length === 2 && msg[0] === "ONLINE") {
+        student_id = String(msg[1]);
+        if (web_timeouts[student_id]) {
+          timeout = web_timeouts[student_id];
+          clearTimeout(timeout);
+          delete web_timeouts[student_id];
+          console.log("Clear Timeout", student_id);
         }
+        $('#deviceStatusWeb-' + student_id).prop("checked", true);
+        web_timeouts[student_id] = setTimeout(callOnlineWebTimeout, 5000, student_id);
       }
     }
   };
