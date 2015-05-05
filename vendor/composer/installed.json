@@ -2942,7 +2942,7 @@
                 "dev-master": "2.6-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Symfony\\Component\\ClassLoader\\": ""
@@ -3001,7 +3001,7 @@
                 "dev-master": "2.0-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Barryvdh\\LaravelIdeHelper\\": "src"
