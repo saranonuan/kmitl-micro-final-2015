@@ -58,7 +58,7 @@ client.onMessageArrived = (message) ->
         clearTimeout(timeout)
         delete web_timeouts[student_id]
         console.log("Clear Timeout", student_id)
-      $('#deviceStatus-' + student_id).prop( "checked", true )
+      $('#deviceStatusWeb-' + student_id).prop( "checked", true )
       web_timeouts[student_id] = setTimeout(callOnlineWebTimeout, 5000, student_id);
 	return;
 
