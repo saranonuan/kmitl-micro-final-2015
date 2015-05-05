@@ -25,12 +25,12 @@
         <ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-8">
             @foreach ($students as $student)
                 <li class="device-status-box">
-                    <span class="student-id">53070{{$student}}</span>
+                    <span class="student-id">{{$student}}</span>
                     <div class="switch small">
-                        <input id="deviceStatus-53070{{$student}}" type="checkbox" disabled>
-                        <label for="deviceStatus-53070{{$student}}"></label>
-                        <input id="deviceStatusWeb-53070{{$student}}" type="checkbox" disabled>
-                        <label for="deviceStatusWeb-53070{{$student}}"></label>
+                        <input id="deviceStatus-{{$student}}" type="checkbox" disabled>
+                        <label for="deviceStatus-{{$student}}"></label>
+                        <input id="deviceStatusWeb-{{$student}}" type="checkbox" disabled>
+                        <label for="deviceStatusWeb-{{$student}}"></label>
                     </div>
                 </li>
             @endforeach

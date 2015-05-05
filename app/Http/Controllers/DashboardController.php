@@ -14,8 +14,8 @@ class DashboardController extends Controller {
 	public function index()
     {
         $students = array(
-            "it53070077",
-            "it53070088"
+            "53070077",
+            "53070088"
         );
 		return view('dashboard.index', array("students" => $students));
 	}
