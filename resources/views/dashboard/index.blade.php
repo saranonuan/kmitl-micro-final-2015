@@ -23,17 +23,17 @@
         </div>
         <hr>
         <ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-8">
-            @for ($i = 0; $i<=45; $i++)
+            @foreach ($students as $student)
                 <li class="device-status-box">
-                    <span class="student-id">53070{{$i}}</span>
+                    <span class="student-id">53070{{$student}}</span>
                     <div class="switch small">
-                        <input id="deviceStatus-53070{{$i}}" type="checkbox" disabled>
-                        <label for="deviceStatus-53070{{$i}}"></label>
-                        <input id="deviceStatusWeb-53070{{$i}}" type="checkbox" disabled>
-                        <label for="deviceStatusWeb-53070{{$i}}"></label>
+                        <input id="deviceStatus-53070{{$student}}" type="checkbox" disabled>
+                        <label for="deviceStatus-53070{{$student}}"></label>
+                        <input id="deviceStatusWeb-53070{{$student}}" type="checkbox" disabled>
+                        <label for="deviceStatusWeb-53070{{$student}}"></label>
                     </div>
                 </li>
-            @endfor
+            @endforeach
         </ul>
     </section>
     <script src="{{ URL::asset('js/all.js') }}"></script>
